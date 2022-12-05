@@ -25,3 +25,9 @@ It has been designed to be responsive and accesible over a range of different de
 - # DESIGN 
     
     - ### Colour Scheme
+
+
+
+- ## Resources 
+
+    1. https://www.w3schools.com/howto/howto_js_dropdown.asp - Used w3Schools for the dropdown menu css code. Adapted the css and html to fit what I wanted to do with it. Used the function from their JavaScript. 

@@ -1,3 +1,7 @@
+body{
+  font-family: "Raleway", sans-serif;
+}
+
 .head{
     background: green;
 }
@@ -9,7 +13,7 @@
 .footer{
     background-color: blue;
 }
-
+/* Used w3schools to get the styling for this menu. Changed the styles and css to achieve what I wanted in the menu.*/
 .navbar {
     overflow: hidden;
     background-color: #333;
