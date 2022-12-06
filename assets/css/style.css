@@ -1,23 +1,44 @@
 body{
   font-family: "Raleway", sans-serif;
+  background-color: whitesmoke;
+  position: relative;
 }
 
 .head{
-    background: green;
+    background-color: #345242;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 150px;
+   
+}
+
+.heading {
+display: flex;
+width: 70%;
+height: auto;
+align-items: left;
+}
+
+.navbar {
+  display: flex;
+  width: 30%;
+  height: 75px;
+  align-self: right;
 }
 
 .body{
-    background-color: red;
+    background-color: #8d8a96;
 }
 
 .footer{
     background-color: blue;
 }
-/* Used w3schools to get the styling for this menu. Changed the styles and css to achieve what I wanted in the menu.*/
+/* Used w3schools to get the code for this menu. Changed the styles and css to achieve what I wanted in the menu.*/
 .navbar {
     overflow: hidden;
-    background-color: #333;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #345242;
+    font-family: "Raleway", sans-serif;
     float: right;
   }
   
@@ -31,7 +52,7 @@ body{
   }
   
   .dropdown {
-    float: left;
+    float: right;
     overflow: hidden;
   }
   
@@ -48,13 +69,13 @@ body{
   }
   
   .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
-    background-color: red;
+    background-color: #989496;
   }
   
   .dropdown-content {
     display: none;
-    position: absolute;
-    background-color: #f9f9f9;
+    position: relative;
+    background-color: whitesmoke;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
