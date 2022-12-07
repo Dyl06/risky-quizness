@@ -7,6 +7,11 @@ body{
 h1, h2 {
   color: rgb(81, 80, 80);
 }
+
+#instructions p {
+  font-size: 1rem;
+}
+
 .head{
     display: flex;
     flex-direction: column;

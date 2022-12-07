@@ -6,7 +6,8 @@ let randomlySelectQuestionList = []
 
 // Load the DOM before starting the function to load the game.
 
-//document.addEventListener('DOMContentLoaded', loadGame());
+document.addEventListener('DOMContentLoaded', runGame());
+
 // Variables containing the arrays with all the questions to be looped through 
 // for the game function.
 let genKnowQuestionList = [{
@@ -209,7 +210,10 @@ function sleep(delay) {
     let generalKnowledgeQuestions = [genKnowledgeObject.question];
     question_string.innerHTML = generalKnowledgeQuestions;
     let generalKnowledgeAnswers = [genKnowledgeObject.answer];
-
+    
+    if(genKnowledgeObject >genKnowQuestionList.length) {
+      alert(`Congradulations you scored ${incrementScore()}!!`)
+    }
     
     
     console.log(currentQuestion);
@@ -218,7 +222,7 @@ function sleep(delay) {
     // wait for the timer till 8 seconds
     await sleep(8000);
   }
-
+    
 }
 
 //Check answer function
