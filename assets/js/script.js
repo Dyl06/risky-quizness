@@ -196,23 +196,12 @@ let sportQuestionList = [{
   "question": "There were 28 sports included in the 2008 Summer Olympic Games",
   "answer": true
 }, ]
-// Loop that prints out all the Sports questions.
-for (let i of sportQuestionList) {
-  let qaObject = (i);
-  let sportQuestions = [qaObject.question];
-
-}
-
-function runGame() {
-
-}
-
+// Function to delay the loop in my code before looping to next question.
 function sleep(delay) {
   return new Promise((resolve, reject) => setTimeout(resolve, delay));
 }
 
-async function displaySportQuestion() {
-  // document.getElementById('question_string').innerHTML = sportQuestions;
+ async function runGame() {
 
   //Loop that prints out all the General Knowledge questions.
 
@@ -221,24 +210,19 @@ async function displaySportQuestion() {
     question_string.innerHTML = generalKnowledgeQuestions;
     let generalKnowledgeAnswers = [genKnowledgeObject.answer];
 
-    console.log(generalKnowledgeAnswers);
-    let currentQuestionIndex = 0;
+    
+    
     console.log(currentQuestion);
-    console.log(generalKnowledgeAnswers);
+    console.log(generalKnowledgeAnswers); 
 
-    // wait for the timer till 10 seconds
-    await sleep(6000);
+    // wait for the timer till 8 seconds
+    await sleep(8000);
   }
 
 }
 
-
-function displayGeneralKnowledgeQuestion() {
-  document.getElementById('question_string').innerHTML = generalKnowledgeQuestions;
-
-}
 //Check answer function
-
+// Event listeners for the check answer function. 
 document.getElementById('checkTrue').addEventListener('click', function(event) {
   fnCheck(true);
 })
@@ -257,7 +241,7 @@ function fnCheck(answer) {
     alert('Unlucky, that is the wrong answer.')
     incrementWrongAnswer();
   }
-  
+
 }
 
 // Gets the current score and adds one to correct answers
@@ -274,8 +258,8 @@ function incrementWrongAnswer() {
 }
 
 //Countdown timer function
-
-var timeleft = 10;
+// Adapted the timer from code I got from stack overflow. 
+var timeleft = 8;
 var downloadTimer = setInterval(function(){
   if(timeleft <= 0){
     clearInterval(downloadTimer);
@@ -285,7 +269,7 @@ var downloadTimer = setInterval(function(){
     document.getElementById("countdown").innerHTML = timeleft +"secs remaining";
   }
   timeleft -= 1;
-}, 1000);
+}, 800);
 
 
 // Function to run the menu.
@@ -311,5 +295,6 @@ function randomlySelect10Question(params) {
   // get 10 questions selected using math.random and store them in another array
 }
 randomlySelect10Question()
-displaySportQuestion()
+runGame()
 fnCheck(answer)
+sleep(delay)
