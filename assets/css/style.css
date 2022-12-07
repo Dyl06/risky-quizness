@@ -44,7 +44,7 @@ align-items: left;
 .category {
   background-color: #d7d3e2;
   height: 400px;
-  width: 50vw;
+  width: 40vw;
   padding-left: 20px;
 }
 
@@ -52,27 +52,9 @@ align-items: left;
   padding-left: 20px;
 }
 
-.answer-options {
-  display: flex;
-  flex-direction: row;
-  width: 20vw;
-  justify-content: space-evenly;
-  padding-top: 40px;
-}
-.score-area {
-  
-  
-}
-
-.answer-options {
-  align-self: center;
-}
 .answer-options button {
   height: 60px;
   width: 90px;
-}
-button {
- 
 }
 
 #checkTrue {
@@ -91,6 +73,15 @@ button {
 
 #checkFalse:hover {
   zoom: 120%;
+}
+
+.timer {
+  display: flex;
+  flex-direction: row;
+  width: 30vw;
+  justify-content: space-evenly;
+  padding-top: 40px;
+  align-items: center;
 }
 
 #score {

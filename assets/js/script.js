@@ -216,19 +216,18 @@ async function displaySportQuestion() {
 
   //Loop that prints out all the General Knowledge questions.
 
-  for (let i of genKnowQuestionList) {
-    let genKnowledgeObject = (i);
+  for (let genKnowledgeObject of genKnowQuestionList) {
     let generalKnowledgeQuestions = [genKnowledgeObject.question];
     question_string.innerHTML = generalKnowledgeQuestions;
-
     let generalKnowledgeAnswers = [genKnowledgeObject.answer];
-    console.log(generalKnowledgeQuestions);
+
+    console.log(generalKnowledgeAnswers);
     let currentQuestionIndex = 0;
     console.log(currentQuestion);
     console.log(generalKnowledgeAnswers);
 
     // wait for the timer till 10 seconds
-    await sleep(10000);
+    await sleep(6000);
   }
 
 }
@@ -240,24 +239,56 @@ function displayGeneralKnowledgeQuestion() {
 }
 //Check answer function
 
-document.getElementById('checkTrue').addEventListener('click', function (event) {
+document.getElementById('checkTrue').addEventListener('click', function(event) {
   fnCheck(true);
 })
 
-document.getElementById('checkFalse').addEventListener('click', function (event) {
+document.getElementById('checkFalse').addEventListener('click', function(event) {
   fnCheck(false);
 })
 
 function fnCheck(answer) {
   let questionAnswer = genKnowQuestionList[currentQuestion].answer;
-  console.log(questionAnswer)
-  if (questionAnswer === answer) {
-    console.log("You got that right.")
+  currentQuestion = currentQuestion+1 ;
+  if (genKnowQuestionList[currentQuestion].answer === answer) {
+    alert('Correct, Well done!!')
+    incrementScore();
   } else {
-    console.log("Naaa... thats wrong.")
+    alert('Unlucky, that is the wrong answer.')
+    incrementWrongAnswer();
   }
+  
 }
 
+// Gets the current score and adds one to correct answers
+
+function incrementScore() {
+  let oldScore = parseInt(document.getElementById('score').innerText);
+  document.getElementById('score').innerText = ++oldScore;
+}
+
+// Gets the tally of incorrect answers.
+function incrementWrongAnswer() {
+  let oldScore = parseInt(document.getElementById('incorrect').innerText);
+  document.getElementById('incorrect').innerText = ++oldScore;
+}
+
+//Countdown timer function
+
+var timeleft = 10;
+var downloadTimer = setInterval(function(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+    document.getElementById("countdown").innerHTML = "Finished";
+    setInterval
+  } else {
+    document.getElementById("countdown").innerHTML = timeleft +"secs remaining";
+  }
+  timeleft -= 1;
+}, 1000);
+
+
+// Function to run the menu.
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
