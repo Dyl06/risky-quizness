@@ -9,7 +9,7 @@ body{
     display: flex;
     flex-direction: row;
     width: 100vw;
-    height: 150px;
+    height: 100px;
    
 }
 
@@ -29,8 +29,8 @@ align-items: left;
 
 .body{
     background-color: #8d8a96;
-    height: 900px;
-    width: 300px;
+    height: 450px;
+    width: 450px;
 }
 
 .category {
@@ -38,7 +38,8 @@ align-items: left;
 }
 
 .footer{
-    background-color: red;
+    background-color: blue;
+    height: 100px;
 }
 /* Used w3schools to get the code for this menu. Changed the styles and css to achieve what I wanted in the menu.*/
 .navbar {
