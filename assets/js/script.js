@@ -1,5 +1,6 @@
-let question_string = document.getElementById('question_string')
 let currentQuestion = 0;
+// Variables containing the arrays with all the questions to be looped through 
+// for the game function.
 let genKnowQuestionList = [{
   "question": "LG produced the 3310.",
   "answer": false
@@ -45,7 +46,7 @@ let genKnowQuestionList = [{
 }, {
   "question": "New York hosts the US's busiest airport.",
   "answer": false
-}, ]
+}, ];
 
 let geogQuestionList = [{
   "question": "There are 6 colors in the SouthAfrican flag.",
@@ -92,7 +93,7 @@ let geogQuestionList = [{
 }, {
   "question": "Holland is a region in the Netherlands.",
   "answer": true
-}, ]
+}, ];
 
 let cuisineQuestionList = [{
   "question": "Granny Smiths are a type of pear.",
@@ -139,7 +140,7 @@ let cuisineQuestionList = [{
 }, {
   "question": "Guinness is the worlds best selling stout beer.",
   "answer": true
-}, ]
+}, ];
 
 let sportQuestionList = [{
   "question": "Simone Biles is a famous swimmer.",
@@ -186,7 +187,7 @@ let sportQuestionList = [{
 }, {
   "question": "There were 28 sports included in the 2008 Summer Olympic Games",
   "answer": true
-}, ]
+}, ];
 
 // Load the DOM before starting the function to load the game.
 document.addEventListener('DOMContentLoaded', startGame());
@@ -194,20 +195,18 @@ document.addEventListener('DOMContentLoaded', startGame());
 // Event listeners for the check answer function. 
 document.getElementById('checkTrue').addEventListener('click', function (event) {
   fnCheck(true);
-})
+});
 
 document.getElementById('checkFalse').addEventListener('click', function (event) {
   fnCheck(false);
-})
+});
 
 // Function that loops through the quiz quiestions and runs the game.
 async function runGame() {
   for (let genKnowledgeObject of genKnowQuestionList) {               // Loop that prints out all the 
     let generalKnowledgeQuestions = [genKnowledgeObject.question];    // General Knowledge quiz questions.
-    let question_string = document.getElementById('question_string')
+    let question_string = document.getElementById('question_string');
     question_string.innerHTML = generalKnowledgeQuestions;
-    let generalKnowledgeAnswers = [genKnowledgeObject.answer];
-    startGame();             //  Function Button to start the game once user is ready.
     startUserTimer();       // Function to start a loop timer for user
     await sleep(8000);      // Function to wait for the timer till 8 seconds
   }
@@ -216,8 +215,8 @@ async function runGame() {
 function startGame() {
   document.getElementById('start-game').addEventListener('click', function (event) {
   runGame();
-  })
-};
+  });
+}
 
 //Countdown timer function
 // Adapted the timer from code I got from stack overflow. 
@@ -227,7 +226,6 @@ function startUserTimer() {
     if (timeleft < 0) {
       clearInterval(userTimer);
       return false;
-      setInterval
     } else {
       document.getElementById("countdown").innerHTML = timeleft + " secs remaining";
     }
@@ -244,10 +242,10 @@ function sleep(delay) {
 function fnCheck(answer) {
   let questionAnswer = genKnowQuestionList[currentQuestion].answer;
   if (questionAnswer === answer) {
-    alert('Correct, Well done!!')
+    alert('Correct, Well done!!');
     incrementScore();
   } else {
-    alert('Unlucky, that is the wrong answer.')
+    alert('Unlucky, that is the wrong answer.');
     incrementWrongAnswer();
   }
   currentQuestion = currentQuestion + 1;
@@ -270,7 +268,7 @@ document.getElementById('reset').onclick = function(){
   document.getElementById('score').innerHTML = 0;
   document.getElementById('incorrect').innerHTML = 0;
   runGame();
-}
+};
 
 // Function to run the menu.
 function menu() {
@@ -286,18 +284,3 @@ window.onclick = function (e) {
     }
   }
 };
-
-//let randomlySelectQuestionList = []
-//document.getElementById('start-game').addEventListener('click', runGame())
-// Variables containing the arrays with all the questions to be looped through 
-// for the game function.
-
-// select random 10 question from the main quesiton list via Math.Random
-//function randomlySelect10Question(params) {
-  // get 10 questions selected using math.random and store them in another array
-//}
-//randomlySelect10Question()
-//runGame()
-// fnCheck(answer)
-// sleep(delay)
-//startGame()
