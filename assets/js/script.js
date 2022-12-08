@@ -1,3 +1,5 @@
+// Load the DOM before starting the function to load the game.
+document.addEventListener('DOMContentLoaded', startGame());
 let currentQuestion = 0;
 let genKnowQuestionList = [{
   "question": "LG produced the 3310.",
@@ -187,66 +189,32 @@ let sportQuestionList = [{
   "answer": true
 }, ]
 
-// Function to delay the loop in my code before looping to next question.
-function sleep(delay) {
-  return new Promise((resolve, reject) => setTimeout(resolve, delay));
-}
-/**Loop that prints out all the General Knowledge questions.
- */
-async function runGame() {
- for (let genKnowledgeObject of genKnowQuestionList) {
-    let generalKnowledgeQuestions = [genKnowledgeObject.question];
-    question_string.innerHTML = generalKnowledgeQuestions;
-    let generalKnowledgeAnswers = [genKnowledgeObject.answer];
-
-    if (currentQuestion === genKnowQuestionList.length - 1) {
-      alert(`Congradulations you scored ${incrementScore().value}!!`)
-    }
-    // Button to start the game once user is ready.
-    startGame();
-    // start a loop timer for user
-    startUserTimer();
-   // wait for the timer till 8 seconds
-    await sleep(8000);
-  }
-}
-
-//Check answer function
 // Event listeners for the check answer function. 
 document.getElementById('checkTrue').addEventListener('click', function (event) {
   fnCheck(true);
 })
-
 document.getElementById('checkFalse').addEventListener('click', function (event) {
   fnCheck(false);
 })
 
-function fnCheck(answer) {
-  let questionAnswer = genKnowQuestionList[currentQuestion].answer;
-  if (questionAnswer === answer) {
-    alert('Correct, Well done!!')
-    incrementScore();
-  } else {
-    alert('Unlucky, that is the wrong answer.')
-    incrementWrongAnswer();
+//Loop that prints out all the quiz questions.
+async function runGame() {
+ for (let genKnowledgeObject of genKnowQuestionList) {
+    let generalKnowledgeQuestions = [genKnowledgeObject.question];
+    let question_string = document.getElementById('question_string')
+    question_string.innerHTML = generalKnowledgeQuestions;
+    let generalKnowledgeAnswers = [genKnowledgeObject.answer];
+    startGame();            // Button to start the game once user is ready.
+    startUserTimer();       // start a loop timer for user
+    await sleep(8000);      // wait for the timer till 8 seconds
   }
-
-  currentQuestion = currentQuestion + 1;
-
 }
 
-// Gets the current score and adds one to correct answers
-
-function incrementScore() {
-  let oldScore = parseInt(document.getElementById('score').innerText);
-  document.getElementById('score').innerText = ++oldScore;
-}
-
-// Gets the tally of incorrect answers.
-function incrementWrongAnswer() {
-  let oldScore = parseInt(document.getElementById('incorrect').innerText);
-  document.getElementById('incorrect').innerText = ++oldScore;
-}
+function startGame() {
+  document.getElementById('start-game').addEventListener('click', function (event) {
+  runGame();
+  })
+};
 
 //Countdown timer function
 // Adapted the timer from code I got from stack overflow. 
@@ -264,8 +232,37 @@ function startUserTimer() {
   }, 800);
 }
 
-// Reset the game counters back to zero and restart the game.
+// Function to delay the loop in my code before looping to next question.
+function sleep(delay) {
+  return new Promise((resolve, reject) => setTimeout(resolve, delay));
+}
 
+//Check answer function
+function fnCheck(answer) {
+  let questionAnswer = genKnowQuestionList[currentQuestion].answer;
+  if (questionAnswer === answer) {
+    alert('Correct, Well done!!')
+    incrementScore();
+  } else {
+    alert('Unlucky, that is the wrong answer.')
+    incrementWrongAnswer();
+  }
+  currentQuestion = currentQuestion + 1;
+}
+
+// Gets the current score and adds one to correct answers
+function incrementScore() {
+  let oldScore = parseInt(document.getElementById('score').innerText);
+  document.getElementById('score').innerText = ++oldScore;
+}
+
+// Gets the tally of incorrect answers.
+function incrementWrongAnswer() {
+  let oldScore = parseInt(document.getElementById('incorrect').innerText);
+  document.getElementById('incorrect').innerText = ++oldScore;
+}
+
+// Reset the game counters back to zero and restart the game.
 document.getElementById('reset').onclick = function(){
   document.getElementById('score').innerHTML = 0;
   document.getElementById('incorrect').innerHTML = 0;
@@ -273,7 +270,7 @@ document.getElementById('reset').onclick = function(){
 }
 
 // Function to run the menu.
-function myFunction() {
+function menu() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
@@ -286,34 +283,11 @@ window.onclick = function (e) {
     }
   }
 };
-
-// DOM CONTENT LOAD 
-function startGame() {
-  document.getElementById('start-game').addEventListener('click', function (event) {
-  runGame();
-  })
-};
-
-
-
-let question_string = document.getElementById('question_string')
-
-let randomlySelectQuestionList = []
-//document.getElementById('start-game').addEventListener('click', runGame())
-
-// Load the DOM before starting the function to load the game.
-
-document.addEventListener('DOMContentLoaded', startGame());
-
+ 
+//let randomlySelectQuestionList = []
 // Variables containing the arrays with all the questions to be looped through 
 // for the game function.
-
 // select random 10 question from the main quesiton list via Math.Random
 //function randomlySelect10Question(params) {
-  // get 10 questions selected using math.random and store them in another array
+// get 10 questions selected using math.random and store them in another array
 //}
-//randomlySelect10Question()
-//runGame()
-// fnCheck(answer)
-// sleep(delay)
-//startGame()
