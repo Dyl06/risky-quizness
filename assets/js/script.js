@@ -2,11 +2,11 @@ let currentQuestion = 0;
 let question_string = document.getElementById('question_string')
 
 let randomlySelectQuestionList = []
-
+//document.getElementById('start-game').addEventListener('click', runGame())
 
 // Load the DOM before starting the function to load the game.
 
-document.addEventListener('DOMContentLoaded', runGame());
+document.addEventListener('DOMContentLoaded', startGame());
 
 // Variables containing the arrays with all the questions to be looped through 
 // for the game function.
@@ -197,12 +197,13 @@ let sportQuestionList = [{
   "question": "There were 28 sports included in the 2008 Summer Olympic Games",
   "answer": true
 }, ]
+
 // Function to delay the loop in my code before looping to next question.
 function sleep(delay) {
   return new Promise((resolve, reject) => setTimeout(resolve, delay));
 }
 
- async function runGame() {
+async function runGame() {
 
   //Loop that prints out all the General Knowledge questions.
 
@@ -210,41 +211,41 @@ function sleep(delay) {
     let generalKnowledgeQuestions = [genKnowledgeObject.question];
     question_string.innerHTML = generalKnowledgeQuestions;
     let generalKnowledgeAnswers = [genKnowledgeObject.answer];
-    
-    if(genKnowledgeObject >genKnowQuestionList.length) {
-      alert(`Congradulations you scored ${incrementScore()}!!`)
+
+    if (currentQuestion === genKnowQuestionList.length - 1) {
+      alert(`Congradulations you scored ${incrementScore().value}!!`)
     }
-    
-    
-    console.log(currentQuestion);
-    console.log(generalKnowledgeAnswers); 
+    startGame();
+    // start a loop timer for user
+    startUserTimer();
 
     // wait for the timer till 8 seconds
     await sleep(8000);
   }
-    
+
 }
 
 //Check answer function
 // Event listeners for the check answer function. 
-document.getElementById('checkTrue').addEventListener('click', function(event) {
+document.getElementById('checkTrue').addEventListener('click', function (event) {
   fnCheck(true);
 })
 
-document.getElementById('checkFalse').addEventListener('click', function(event) {
+document.getElementById('checkFalse').addEventListener('click', function (event) {
   fnCheck(false);
 })
 
 function fnCheck(answer) {
   let questionAnswer = genKnowQuestionList[currentQuestion].answer;
-  currentQuestion = currentQuestion+1 ;
-  if (genKnowQuestionList[currentQuestion].answer === answer) {
+  if (questionAnswer === answer) {
     alert('Correct, Well done!!')
     incrementScore();
   } else {
     alert('Unlucky, that is the wrong answer.')
     incrementWrongAnswer();
   }
+
+  currentQuestion = currentQuestion + 1;
 
 }
 
@@ -263,18 +264,19 @@ function incrementWrongAnswer() {
 
 //Countdown timer function
 // Adapted the timer from code I got from stack overflow. 
-var timeleft = 8;
-var downloadTimer = setInterval(function(){
-  if(timeleft <= 0){
-    clearInterval(downloadTimer);
-    document.getElementById("countdown").innerHTML = "Finished";
-    setInterval
-  } else {
-    document.getElementById("countdown").innerHTML = timeleft +"secs remaining";
-  }
-  timeleft -= 1;
-}, 800);
-
+function startUserTimer() {
+  var timeleft = 8;
+  var userTimer = setInterval(function () {
+    if (timeleft < 0) {
+      clearInterval(userTimer);
+      return false;
+      setInterval
+    } else {
+      document.getElementById("countdown").innerHTML = timeleft + " secs remaining";
+    }
+    timeleft -= 1;
+  }, 800);
+}
 
 // Function to run the menu.
 function myFunction() {
@@ -292,13 +294,20 @@ window.onclick = function (e) {
 }
 
 // DOM CONTENT LOAD 
+function startGame() {
 
+document.getElementById('start-game').addEventListener('click', function (event) {
+  runGame();
+})
+
+}
 
 // select random 10 question from the main quesiton list via Math.Random
-function randomlySelect10Question(params) {
+//function randomlySelect10Question(params) {
   // get 10 questions selected using math.random and store them in another array
-}
-randomlySelect10Question()
-runGame()
-fnCheck(answer)
-sleep(delay)
+//}
+//randomlySelect10Question()
+//runGame()
+// fnCheck(answer)
+// sleep(delay)
+//startGame()
