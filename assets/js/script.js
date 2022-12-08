@@ -191,12 +191,10 @@ let sportQuestionList = [{
 function sleep(delay) {
   return new Promise((resolve, reject) => setTimeout(resolve, delay));
 }
-
+/**Loop that prints out all the General Knowledge questions.
+ */
 async function runGame() {
-
-  //Loop that prints out all the General Knowledge questions.
-
-  for (let genKnowledgeObject of genKnowQuestionList) {
+ for (let genKnowledgeObject of genKnowQuestionList) {
     let generalKnowledgeQuestions = [genKnowledgeObject.question];
     question_string.innerHTML = generalKnowledgeQuestions;
     let generalKnowledgeAnswers = [genKnowledgeObject.answer];
@@ -208,12 +206,9 @@ async function runGame() {
     startGame();
     // start a loop timer for user
     startUserTimer();
-
-    // wait for the timer till 8 seconds
+   // wait for the timer till 8 seconds
     await sleep(8000);
-
   }
-
 }
 
 //Check answer function
@@ -269,7 +264,7 @@ function startUserTimer() {
   }, 800);
 }
 
-// Reset the game counters back to zero. 
+// Reset the game counters back to zero and restart the game.
 
 document.getElementById('reset').onclick = function(){
   document.getElementById('score').innerHTML = 0;
@@ -294,11 +289,9 @@ window.onclick = function (e) {
 
 // DOM CONTENT LOAD 
 function startGame() {
-
-document.getElementById('start-game').addEventListener('click', function (event) {
+  document.getElementById('start-game').addEventListener('click', function (event) {
   runGame();
-})
-
+  })
 };
 
 
