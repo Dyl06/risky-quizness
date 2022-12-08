@@ -31,3 +31,18 @@ It has been designed to be responsive and accesible over a range of different de
 - ## Resources 
 
     1. https://www.w3schools.com/howto/howto_js_dropdown.asp - Used w3Schools for the dropdown menu css code. Adapted the css and html to fit what I wanted to do with it. Used the function from their JavaScript. 
+
+# Testing 
+
+   ### Jshint
+
+   ### Jigsaw
+    - Validated using jigsaw validator with no errors found. 
+    - There were 3 warnings found for using zoom, as it is a vendor extension. I am happy to use it however as I believe it creates a positive user experience by zooming in the menu and true false answer buttons.
+    -Below is the link to the css validator.
+    
+    http://jigsaw.w3.org/css-validator/validator$link
+    or
+    http://jigsaw.w3.org/css-validator/check/referer (for HTML/XML document only)
+
+   ### W3C Validator
