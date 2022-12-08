@@ -42,10 +42,6 @@ align-items: left;
   align-items: center;     
 }
 
- h2 {
-
-}
-
 .category {
   background-color: #d7d3e2;
   height: 400px;
@@ -107,7 +103,7 @@ a .social {
   color: darkslategray;
 }
 
-/* Used w3schools to get the code for this menu. Changed the styles and css to achieve what I wanted in the menu.*/
+/* Used w3schools to get the code for this menu. Changed the styles and css to achieve what I wanted in the menu. */
 .navbar {
     overflow: hidden;
     font-family: "Raleway", sans-serif;

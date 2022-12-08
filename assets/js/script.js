@@ -1,5 +1,4 @@
-// Load the DOM before starting the function to load the game.
-document.addEventListener('DOMContentLoaded', startGame());
+let question_string = document.getElementById('question_string')
 let currentQuestion = 0;
 let genKnowQuestionList = [{
   "question": "LG produced the 3310.",
@@ -189,24 +188,28 @@ let sportQuestionList = [{
   "answer": true
 }, ]
 
+// Load the DOM before starting the function to load the game.
+document.addEventListener('DOMContentLoaded', startGame());
+
 // Event listeners for the check answer function. 
 document.getElementById('checkTrue').addEventListener('click', function (event) {
   fnCheck(true);
 })
+
 document.getElementById('checkFalse').addEventListener('click', function (event) {
   fnCheck(false);
 })
 
-//Loop that prints out all the quiz questions.
+// Function that loops through the quiz quiestions and runs the game.
 async function runGame() {
- for (let genKnowledgeObject of genKnowQuestionList) {
-    let generalKnowledgeQuestions = [genKnowledgeObject.question];
+  for (let genKnowledgeObject of genKnowQuestionList) {               // Loop that prints out all the 
+    let generalKnowledgeQuestions = [genKnowledgeObject.question];    // General Knowledge quiz questions.
     let question_string = document.getElementById('question_string')
     question_string.innerHTML = generalKnowledgeQuestions;
     let generalKnowledgeAnswers = [genKnowledgeObject.answer];
-    startGame();            // Button to start the game once user is ready.
-    startUserTimer();       // start a loop timer for user
-    await sleep(8000);      // wait for the timer till 8 seconds
+    startGame();             //  Function Button to start the game once user is ready.
+    startUserTimer();       // Function to start a loop timer for user
+    await sleep(8000);      // Function to wait for the timer till 8 seconds
   }
 }
 
@@ -232,7 +235,7 @@ function startUserTimer() {
   }, 800);
 }
 
-// Function to delay the loop in my code before looping to next question.
+// Function to delay the loop in code before looping to next question.
 function sleep(delay) {
   return new Promise((resolve, reject) => setTimeout(resolve, delay));
 }
@@ -283,11 +286,18 @@ window.onclick = function (e) {
     }
   }
 };
- 
+
 //let randomlySelectQuestionList = []
+//document.getElementById('start-game').addEventListener('click', runGame())
 // Variables containing the arrays with all the questions to be looped through 
 // for the game function.
+
 // select random 10 question from the main quesiton list via Math.Random
 //function randomlySelect10Question(params) {
-// get 10 questions selected using math.random and store them in another array
+  // get 10 questions selected using math.random and store them in another array
 //}
+//randomlySelect10Question()
+//runGame()
+// fnCheck(answer)
+// sleep(delay)
+//startGame()
