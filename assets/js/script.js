@@ -1,15 +1,4 @@
 let currentQuestion = 0;
-let question_string = document.getElementById('question_string')
-
-let randomlySelectQuestionList = []
-//document.getElementById('start-game').addEventListener('click', runGame())
-
-// Load the DOM before starting the function to load the game.
-
-document.addEventListener('DOMContentLoaded', startGame());
-
-// Variables containing the arrays with all the questions to be looped through 
-// for the game function.
 let genKnowQuestionList = [{
   "question": "LG produced the 3310.",
   "answer": false
@@ -215,12 +204,14 @@ async function runGame() {
     if (currentQuestion === genKnowQuestionList.length - 1) {
       alert(`Congradulations you scored ${incrementScore().value}!!`)
     }
+    // Button to start the game once user is ready.
     startGame();
     // start a loop timer for user
     startUserTimer();
 
     // wait for the timer till 8 seconds
     await sleep(8000);
+
   }
 
 }
@@ -278,6 +269,14 @@ function startUserTimer() {
   }, 800);
 }
 
+// Reset the game counters back to zero. 
+
+document.getElementById('reset').onclick = function(){
+  document.getElementById('score').innerHTML = 0;
+  document.getElementById('incorrect').innerHTML = 0;
+  runGame();
+}
+
 // Function to run the menu.
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
@@ -291,7 +290,7 @@ window.onclick = function (e) {
       myDropdown.classList.remove('show');
     }
   }
-}
+};
 
 // DOM CONTENT LOAD 
 function startGame() {
@@ -300,7 +299,21 @@ document.getElementById('start-game').addEventListener('click', function (event)
   runGame();
 })
 
-}
+};
+
+
+
+let question_string = document.getElementById('question_string')
+
+let randomlySelectQuestionList = []
+//document.getElementById('start-game').addEventListener('click', runGame())
+
+// Load the DOM before starting the function to load the game.
+
+document.addEventListener('DOMContentLoaded', startGame());
+
+// Variables containing the arrays with all the questions to be looped through 
+// for the game function.
 
 // select random 10 question from the main quesiton list via Math.Random
 //function randomlySelect10Question(params) {
