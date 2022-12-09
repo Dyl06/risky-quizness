@@ -233,23 +233,28 @@ async function generalKnowledgeGame() {
     displayGeneralKnowledgeQuestions();
   }); 
 };
-/*
-async function 
-  document.getElementById("geography").addEventListener('click', function(event) {
+
+async function geographyGame() {
+  document.getElementById("geography").addEventListener('click', function() {
     displayGeographyQuestions();
   });
-  document.getElementById("cuisine").addEventListener('click', function(event) {
+};
+
+async function cuisineGame() {
+  document.getElementById("cuisine").addEventListener('click', function() {
     displayCuisineQuestions();
   });
-  document.getElementById("sport").addEventListener('click', function(event) {
+};
+
+async function sportGame() {
+  document.getElementById("sport").addEventListener('click', function() {
     displaySportQuestions();
   });
-  */
-
+};
 
 function startGame() {
   document.getElementById('start-game').addEventListener('click', function (event) {
-  runGame();
+    generalKnowledgeGame();
   });
 }
 
