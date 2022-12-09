@@ -240,8 +240,8 @@ async function runGame(gameType) {
     alert('Unkown game!')
 
   }
-    startUserTimer();       // Function to start a loop timer for user
-    await sleep(8000);      // Function to wait for the timer till 8 seconds
+   runGame(gameType);// startUserTimer();       // Function to start a loop timer for user
+   //  await sleep(8000);      // Function to wait for the timer till 8 seconds
   }
 
 
