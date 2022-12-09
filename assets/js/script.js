@@ -193,20 +193,19 @@ let sportQuestionList = [{
 document.addEventListener('DOMContentLoaded', startGame());
 */
 document.addEventListener("DOMContentLoaded", function(){
-  let buttons = document.getElementsByTagName('button');
-    for (let button of buttons) {
-      button.addEventListener('click',function() {
-        if(this.getAttribute('data-type') === "submit") {
-          runGame(gameType);
-        } else {
-          let gameType = this.getAttribute("data-type");
-          runGame(gameType);
-        }
-      })
-      
-    }
-    runGame('generalKnowledge');
-})
+    if(generalKnowledgeGame === onclick) {
+      displayGeneralKnowledgeQuestions();
+    } else if (geographyGame === onclick) {
+      displayGeographyQuestions();
+    } else {
+      alert('Please select a category.');
+    };
+});
+
+let generalKnowledgeGame = document.getElementById("generalKnowledge");
+let geographyGame = document.getElementById("geography");
+let cuisineGame = document.getElementById("cuisine");
+let sportGame = document.getElementById("sport")
 
 // Event listeners for the check answer function. 
 document.getElementById('checkTrue').addEventListener('click', function (event) {
@@ -227,7 +226,13 @@ document.getElementById('checkFalse').addEventListener('click', function (event)
     await sleep(8000);      // Function to wait for the timer till 8 seconds
   }
 }
-*/
+
+let generalKnowledgeGame = document.getElementById("generalKnowledge");
+let geographyGame = document.getElementById("geography");
+let cuisineGame = document.getElementById("cuisine");
+let sportGame = document.getElementById("sport")
+
+
 async function generalKnowledgeGame() {
   document.getElementById("generalKnowledge").addEventListener('click', function() {
     displayGeneralKnowledgeQuestions();
@@ -251,7 +256,7 @@ async function sportGame() {
     displaySportQuestions();
   });
 };
-
+*/
 function startGame() {
   document.getElementById('start-game').addEventListener('click', function (event) {
     generalKnowledgeGame();
