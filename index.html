@@ -35,7 +35,7 @@
                 Click on the True or False Button to answer.
             </p>
             <div class="question" id="question">
-                <div id="question_string"></div>
+                <div id="generalKnowledgequestion_string"></div>
                 <div class="timer">
                     <div class="answer-options" id="answer">
                         <button class="btn" id="checkTrue">True</button>
@@ -44,10 +44,10 @@
                     <div id="countdown"></div>
                 </div>
             </div>
-            <div class="start-button">
-                <button id="start-game">Start</button>
-                <button id="reset">Reset</button>
+            <div  class="start-button">
+                <button data-type="generalKnowledge" id="start-game">Start</button>
             </div>
+            <button data-type="submit" id="reset">Reset</button>
         </div>
         <div class="score-area">
             <p>Correct Answers <span id="score">0</span></p>

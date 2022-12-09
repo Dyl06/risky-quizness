@@ -188,9 +188,24 @@ let sportQuestionList = [{
   "question": "There were 28 sports included in the 2008 Summer Olympic Games",
   "answer": true
 }, ];
-
+/*
 // Load the DOM before starting the function to load the game.
 document.addEventListener('DOMContentLoaded', startGame());
+*/
+document.addEventListener("DOMContentLoaded", function(){
+  let buttons = document.getElementsByTagName('button');
+    for (let button of buttons) {
+      button.addEventListener('click',function() {
+        if(this.getAttribute('data-type') === "submit") {
+          reset();
+        } else {
+          let gameType = this.getAttribute("data-type");
+        }
+      })
+      
+    }
+    runGame('gameType');
+})
 
 // Event listeners for the check answer function. 
 document.getElementById('checkTrue').addEventListener('click', function (event) {
@@ -202,19 +217,33 @@ document.getElementById('checkFalse').addEventListener('click', function (event)
 });
 
 // Function that loops through the quiz quiestions and runs the game.
-async function runGame() {
+/*async function runGame() {
   for (let genKnowledgeObject of genKnowQuestionList) {               // Loop that prints out all the 
     let generalKnowledgeQuestions = [genKnowledgeObject.question];    // General Knowledge quiz questions.
-    let question_string = document.getElementById('question_string');
-    question_string.innerHTML = generalKnowledgeQuestions;
+    let generalKnowledgequestion_string = document.getElementById('generalKnowledgequestion_string');
+    generalKnowledgequestion_string.innerHTML = generalKnowledgeQuestions;
     startUserTimer();       // Function to start a loop timer for user
     await sleep(8000);      // Function to wait for the timer till 8 seconds
   }
 }
+*/
+async function runGame(gameType) {
+  if(gameType === "generalKnowledge") {
+    displayGeneralKnowledgeQuestions();
+  }else if(gameType === 'geography') {
+    displayGeographyQuestions();
+  } else { 
+    alert('Unkown game!')
+
+  }
+    startUserTimer();       // Function to start a loop timer for user
+    await sleep(8000);      // Function to wait for the timer till 8 seconds
+  }
+
 
 function startGame() {
   document.getElementById('start-game').addEventListener('click', function (event) {
-  runGame();
+  runGame(gameType);
   });
 }
 
@@ -264,11 +293,13 @@ function incrementWrongAnswer() {
 }
 
 // Reset the game counters back to zero and restart the game.
+function reset(){
 document.getElementById('reset').onclick = function(){
   document.getElementById('score').innerHTML = 0;
   document.getElementById('incorrect').innerHTML = 0;
-  runGame();
-};
+  runGame(gameType);
+}
+}
 
 // Function to run the menu.
 function menu() {
@@ -284,3 +315,29 @@ window.onclick = function (e) {
     }
   }
 };
+
+
+
+
+
+async function displayGeneralKnowledgeQuestions() {
+
+  for (let genKnowledgeObject of genKnowQuestionList) {               // Loop that prints out all the 
+    let generalKnowledgeQuestions = [genKnowledgeObject.question];    // General Knowledge quiz questions.
+    let generalKnowledgequestion_string = document.getElementById('generalKnowledgequestion_string');
+    generalKnowledgequestion_string.innerHTML = generalKnowledgeQuestions;
+    startUserTimer();       // Function to start a loop timer for user
+    await sleep(8000);      // Function to wait for the timer till 8 seconds
+}
+}
+
+async function displayGeographyQuestions() {
+
+  for (let geographyObject of geogQuestionList) {
+    let geographyQuestions = [geographyObject.question];
+    let geogquestion_string = document.getElementById("geoegquestion_string");
+    geoegquestion_string.innerHTML = geographyQuestions;
+    startUserTimer();       // Function to start a loop timer for user
+    await sleep(8000);      // Function to wait for the timer till 8 seconds
+  }
+}
