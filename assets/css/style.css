@@ -39,8 +39,8 @@ height: auto;
 }
 
 .category {
-  background-color: #d7d3e2;
-  height: 400px;
+  background-color: #d8eef6;
+  height: auto;
   width: 40vw;
   padding-left: 20px;
 }
@@ -162,4 +162,27 @@ a .social {
   
   .show {
     display: block;
+  }
+/* Media Queries */
+
+@media (max-width: 1200px) {
+  .category {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .category {
+    width: 80vw;
+  }
+}
+
+  @media (max-width: 768px) {
+    .category {
+      width: 100vw;
+    }
+
+    .timer {
+      width: 100vw;
+    }
   }
