@@ -197,9 +197,10 @@ document.addEventListener("DOMContentLoaded", function(){
     for (let button of buttons) {
       button.addEventListener('click',function() {
         if(this.getAttribute('data-type') === "submit") {
-          reset();
+          runGame(gameType);
         } else {
           let gameType = this.getAttribute("data-type");
+          runGame(gameType);
         }
       })
       
@@ -227,27 +228,28 @@ document.getElementById('checkFalse').addEventListener('click', function (event)
   }
 }
 */
-async function runGame(gameType) {
-  if(gameType === "generalKnowledge") {
+async function generalKnowledgeGame() {
+  document.getElementById("generalKnowledge").addEventListener('click', function() {
     displayGeneralKnowledgeQuestions();
-  }else if(gameType === "geography") {
+  }); 
+};
+/*
+async function 
+  document.getElementById("geography").addEventListener('click', function(event) {
     displayGeographyQuestions();
-  } else if( gameType === "cuisine") {
+  });
+  document.getElementById("cuisine").addEventListener('click', function(event) {
     displayCuisineQuestions();
-  } else if(gameType === "sport") {
+  });
+  document.getElementById("sport").addEventListener('click', function(event) {
     displaySportQuestions();
-  } else{ 
-    alert('Unkown game!')
-
-  }
-   runGame(gameType);// startUserTimer();       // Function to start a loop timer for user
-   //  await sleep(8000);      // Function to wait for the timer till 8 seconds
-  }
+  });
+  */
 
 
 function startGame() {
   document.getElementById('start-game').addEventListener('click', function (event) {
-  runGame(gameType);
+  runGame();
   });
 }
 
@@ -305,20 +307,6 @@ document.getElementById('reset').onclick = function(){
 }
 }
 
-// Function to run the menu.
-function menu() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function (e) {
-  if (!e.target.matches('.dropbtn')) {
-    var myDropdown = document.getElementById("myDropdown");
-    if (myDropdown.classList.contains('show')) {
-      myDropdown.classList.remove('show');
-    }
-  }
-};
 
 
 
