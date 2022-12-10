@@ -220,7 +220,7 @@ document.getElementById('checkFalse').addEventListener('click', function (event)
 async function runGame() {
 
   switch (quizType) {
-    case "General":
+    case "General Knowledge":
       CurrentQuestionsList = genKnowQuestionList
       break;
     case "Geogrpahy":

@@ -256,7 +256,7 @@ function sleep(delay) {
 
 //Check answer function
 function fnCheck(answer) {
-  let questionAnswer = genKnowQuestionList[currentQuestion].answer;
+  let questionAnswer = questionList[currentQuestion].answer;
   if (questionAnswer === answer) {
     incrementScore();
   } else {
@@ -286,15 +286,14 @@ function incrementWrongAnswer() {
   document.getElementById('incorrect').innerText = ++oldScore;
 };
 
-// Reset the game counters back to zero and restart the game.
-function reset(){  
+// Reset the game counters back to zero and restart the game. 
 
   document.getElementById('reset').addEventListener('click', function(){
   document.getElementById('score').innerHTML = 0;
   document.getElementById('incorrect').innerHTML = 0;
   runGame();
 });
-};
+
 
 async function displayGeneralKnowledgeQuestions() {
 
