@@ -17,7 +17,6 @@
     <div class="body">
 
         <div class="category">
-            <h2>`${quizCategories}`</h2>
             <div class="choose_quiz">
                 <select name="quiz" id="quiz">
                     <option value="General Knowledge">General Knowledge</option>
@@ -26,7 +25,9 @@
                     <option value="Sport">Sport</option>
                 </select>
             </div>
-    
+            <span class="start-button"> 
+                <button id="start-game">Start</button>
+            </span>
             <p id="instructions" style="font-size: 1rem;" > To play this game: <br> 
                 You must answer all questions within the alloted 8secs. <br>
                 Click on the True or False Button to answer.
@@ -40,9 +41,6 @@
                     </div>
                     <div id="countdown"></div>
                 </div>
-            </div>
-            <div class="start-button">
-                <button id="start-game">Start</button>
             </div>
             <button id="reset">Reset</button>
         </div>

@@ -99,70 +99,14 @@ a .social {
   color: darkslategray;
 }
 
-/* Used w3schools to get the code for this menu. Changed the styles and css to achieve what I wanted in the menu. */
-.navbar {
-    overflow: hidden;
-    font-family: "Raleway", sans-serif;
-    float: right;
-  }
-  
-  .navbar a {
-    float: left;
-    font-size: 16px;
-    color: rgb(81, 80, 80);
-    text-align: center;
-    padding: 14px 10px;
-    text-decoration: none;
-  }
-  
-  .dropdown {
-    overflow: hidden;
-    display: inline-block;
-  }
-  
-  .dropdown .dropbtn {
-    cursor: pointer;
-    font-size: 16px;  
-    border: none;
-    outline: none;
-    color: rgb(81, 80, 80);
-    padding: 14px 10px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-  }
-  
-  .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
-    background-color: rgb(81, 80, 80);
-    color: whitesmoke;
-    zoom: 110%;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: whitesmoke;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    float: none;
-    color: rgb(81, 80, 80);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  
-  .show {
-    display: block;
-  }
+#start-game {
+  background-color: rgb(70, 160, 238);
+}
+
+#start-game:hover {
+  zoom: 105%;
+}
+
 /* Media Queries */
 
 @media (max-width: 1200px) {

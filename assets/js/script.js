@@ -190,20 +190,16 @@ let sportQuestionList = [{
   "question": "There were 28 sports included in the 2008 Summer Olympic Games",
   "answer": true
 }, ];
-/*
-// Load the DOM before starting the function to load the game.
-document.addEventListener('DOMContentLoaded', startGame());
-*/
+
+// Load the DOM before starting the function to run the game.
 document.addEventListener("DOMContentLoaded", function() {
   
   quiz.addEventListener('change', function () {
     quizCategories = quiz.value;
   })
-
   document.getElementById('start-game').addEventListener('click', function (event) {
       runGame();
   });
-
 });
 
 // Function that loops through the quiz quiestions and runs the game.
@@ -293,46 +289,3 @@ function incrementWrongAnswer() {
   document.getElementById('incorrect').innerHTML = 0;
   runGame();
 });
-
-
-async function displayGeneralKnowledgeQuestions() {
-
-  for (let genKnowledgeObject of genKnowQuestionList) {               // Loop that prints out all the 
-    let generalKnowledgeQuestions = [genKnowledgeObject.question];    // General Knowledge quiz questions.
-    let generalKnowledgequestion_string = document.getElementById('question_string');
-    generalKnowledgequestion_string.innerHTML = generalKnowledgeQuestions;
-    startUserTimer();       // Function to start a loop timer for user
-    await sleep(8000);      // Function to wait for the timer till 8 seconds
-}
-}
-
-async function displayGeographyQuestions() {
-
-  for (let geographyObject of geogQuestionList) {
-    let geographyQuestions = [geographyObject.question];
-    let geogquestion_string = document.getElementById("question_string");
-    geoegquestion_string.innerHTML = geographyQuestions;
-    startUserTimer();       // Function to start a loop timer for user
-    await sleep(8000);      // Function to wait for the timer till 8 seconds
-  }
-}
-
-async function displayCuisineQuestions() {
-  for (let cuisineObject of cuisineQuestionList) {
-    let cuisineQuestions = [cuisineObject.question];
-    let cuisineQuestion_string = document.getElementById("question_string");
-    cuisineQuestion_string.innerHTML = cuisineQuestions;
-    startUserTimer();       // Function to start a loop timer for user
-    await sleep(8000);      // Function to wait for the timer till 8 seconds
-  }
-}
-
-async function displaySportQuestions() {
-  for (let sportObject of sportQuestionList) {
-    let sportQuestions = [sportObject.question];
-    let sportQuestion_string = document.getElementById("question_string");
-    sportQuestion_string.innerHTML = sportQuestions;
-    startUserTimer();       // Function to start a loop timer for user
-    await sleep(8000);      // Function to wait for the timer till 8 seconds
-  }
-}
