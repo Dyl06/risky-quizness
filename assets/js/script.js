@@ -51,7 +51,7 @@ let genKnowQuestionList = [{
 }, ];
 
 let geogQuestionList = [{
-  "question": "There are 6 colors in the SouthAfrican flag.",
+  "question": "There are 6 colors in the South African flag.",
   "answer": true
 }, {
   "question": "Toronto is the capital of Canada.",
@@ -113,7 +113,7 @@ let cuisineQuestionList = [{
   "question": "Mozzarella cheese is traditionally made from the milk of a water buffalo.",
   "answer": true
 }, {
-  "question": "Bob, Bruce and Simon and the three Rice Krispies mascots.",
+  "question": "Bob, Bruce and Simon are the three Rice Krispies mascots.",
   "answer": false
 }, {
   "question": "Mageirocophobia is the fear of cooking.",
@@ -154,7 +154,7 @@ let sportQuestionList = [{
   "question": "Conor McGregor was the highest paid athlete in 2021.",
   "answer": true
 }, {
-  "question": "The Olympic games are help every 4 years.",
+  "question": "The Olympic games are held every 4 years.",
   "answer": true
 }, {
   "question": "Football is played during the FIFA World Cup.",
@@ -219,14 +219,15 @@ async function runGame() {
       questionList = sportQuestionList;
       break;
   }
-
-  for (let questions of questionList) {               // Loop that prints out all the 
-    let quizQuestions = [questions.question];    //  Quiz questions.
+// Loop that prints out all the Quiz questions.
+  for (let questions of questionList) {                
+    let quizQuestions = [questions.question];     
     let questionString = document.getElementById('question_string');
     questionString.innerHTML = quizQuestions;
     startUserTimer();       // Function to start a loop timer for user
-    await sleep(8000);      // Function to wait for the timer till 8 seconds
+    await sleep(8000);      // Function that sets the timer for 8 seconds, before iterating to next question
   }
+  
 }
 
 //Countdown timer function
@@ -283,9 +284,8 @@ function incrementWrongAnswer() {
 }
 
 // Reset the game counters back to zero and restart the game. 
-
   document.getElementById('reset').addEventListener('click', function(){
   document.getElementById('score').innerHTML = 0;
   document.getElementById('incorrect').innerHTML = 0;
-  runGame();
+  
 });
