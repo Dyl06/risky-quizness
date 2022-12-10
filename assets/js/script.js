@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   quiz.addEventListener('change', function () {
     quizCategories = quiz.value;
-  })
+  });
   document.getElementById('start-game').addEventListener('click', function (event) {
       runGame();
   });
@@ -207,18 +207,18 @@ async function runGame() {
 
   switch (quizCategories) {
     case "General Knowledge":
-      questionList = genKnowQuestionList
+      questionList = genKnowQuestionList;
       break;
     case "Geography":
-      questionList = geogQuestionList
+      questionList = geogQuestionList;
       break;
     case "Cuisine":
-      questionList = cuisineQuestionList
+      questionList = cuisineQuestionList;
       break;
     default:
-      questionList = sportQuestionList
+      questionList = sportQuestionList;
       break;
-  };
+  }
 
   for (let questions of questionList) {               // Loop that prints out all the 
     let quizQuestions = [questions.question];    //  Quiz questions.
@@ -226,8 +226,8 @@ async function runGame() {
     questionString.innerHTML = quizQuestions;
     startUserTimer();       // Function to start a loop timer for user
     await sleep(8000);      // Function to wait for the timer till 8 seconds
-  };
-};
+  }
+}
 
 //Countdown timer function
 // Adapted the timer from code I got from stack overflow. 
@@ -242,12 +242,12 @@ function startUserTimer() {
     }
     timeleft -= 1;
   }, 800);
-};
+}
 
 // Function to delay the loop in code before looping to next question.
 function sleep(delay) {
   return new Promise((resolve, reject) => setTimeout(resolve, delay));
-};
+}
 
 
 //Check answer function
@@ -257,9 +257,9 @@ function fnCheck(answer) {
     incrementScore();
   } else {
     incrementWrongAnswer();
-  };
+  }
   currentQuestion = currentQuestion + 1;
-};
+}
 
 // Event listeners for the check answer function. 
 document.getElementById('checkTrue').addEventListener('click', function (event) {
@@ -280,7 +280,7 @@ function incrementScore() {
 function incrementWrongAnswer() {
   let oldScore = parseInt(document.getElementById('incorrect').innerText);
   document.getElementById('incorrect').innerText = ++oldScore;
-};
+}
 
 // Reset the game counters back to zero and restart the game. 
 
