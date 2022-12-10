@@ -1,5 +1,5 @@
-let quiz = document.getElementById('quiz');
-let quizCategories = null;
+let quizSelection = document.getElementById("quiz");
+let quizType = null;
 let currentQuestion = 0;
 // Variables containing the arrays with all the questions to be looped through 
 // for the game function.
@@ -194,44 +194,54 @@ let sportQuestionList = [{
 // Load the DOM before starting the function to load the game.
 document.addEventListener('DOMContentLoaded', startGame());
 */
-document.addEventListener("DOMContentLoaded", function() {
-  
-  quiz.addEventListener('change', function () {
-    quizCategories = quiz.value;
+document.addEventListener("DOMContentLoaded", function () {
+
+  quizSelection.addEventListener('change', function () {
+    quizType = quizSelection.value;
+    console.log(`quizType is ${quizType}`);
   })
 
   document.getElementById('start-game').addEventListener('click', function (event) {
-      runGame();
+    runGame();
   });
 
+});
+
+// Event listeners for the check answer function. 
+document.getElementById('checkTrue').addEventListener('click', function (event) {
+  fnCheck(true);
+});
+
+document.getElementById('checkFalse').addEventListener('click', function (event) {
+  fnCheck(false);
 });
 
 // Function that loops through the quiz quiestions and runs the game.
 async function runGame() {
 
-  switch (quizCategories) {
-    case "General Knowledge":
-      questionList = genKnowQuestionList
+  switch (quizType) {
+    case "General":
+      CurrentQuestionsList = genKnowQuestionList
       break;
-    case "Geography":
-      questionList = geogQuestionList
+    case "Geogrpahy":
+      CurrentQuestionsList = geogQuestionList
       break;
     case "Cuisine":
-      questionList = cuisineQuestionList
+      CurrentQuestionsList = cuisineQuestionList
       break;
     default:
-      questionList = sportQuestionList
+      CurrentQuestionsList = sportQuestionList
       break;
-  };
+  }
 
-  for (let questions of questionList) {               // Loop that prints out all the 
-    let quizQuestions = [questions.question];    //  Quiz questions.
-    let questionString = document.getElementById('question_string');
-    questionString.innerHTML = quizQuestions;
-    startUserTimer();       // Function to start a loop timer for user
-    await sleep(8000);      // Function to wait for the timer till 8 seconds
-  };
-};
+  for (let genKnowledgeObject of CurrentQuestionsList) { // Loop that prints out all the 
+    let generalKnowledgeQuestions = [genKnowledgeObject.question]; // General Knowledge quiz questions.
+    let generalKnowledgequestion_string = document.getElementById('question_string');
+    generalKnowledgequestion_string.innerHTML = generalKnowledgeQuestions;
+    startUserTimer(); // Function to start a loop timer for user
+    await sleep(8000); // Function to wait for the timer till 8 seconds
+  }
+}
 
 //Countdown timer function
 // Adapted the timer from code I got from stack overflow. 
@@ -258,21 +268,14 @@ function sleep(delay) {
 function fnCheck(answer) {
   let questionAnswer = genKnowQuestionList[currentQuestion].answer;
   if (questionAnswer === answer) {
+    alert('Correct, Well done!!');
     incrementScore();
   } else {
+    alert('Unlucky, that is the wrong answer.');
     incrementWrongAnswer();
-  };
+  }
   currentQuestion = currentQuestion + 1;
-};
-
-// Event listeners for the check answer function. 
-document.getElementById('checkTrue').addEventListener('click', function (event) {
-  fnCheck(true);
-});
-
-document.getElementById('checkFalse').addEventListener('click', function (event) {
-  fnCheck(false);
-});
+}
 
 // Gets the current score and adds one to correct answers
 function incrementScore() {
@@ -284,27 +287,31 @@ function incrementScore() {
 function incrementWrongAnswer() {
   let oldScore = parseInt(document.getElementById('incorrect').innerText);
   document.getElementById('incorrect').innerText = ++oldScore;
-};
+}
 
 // Reset the game counters back to zero and restart the game.
-function reset(){  
+function reset() {
+  document.getElementById('reset').onclick = function () {
+    document.getElementById('score').innerHTML = 0;
+    document.getElementById('incorrect').innerHTML = 0;
+    runGame(gameType);
+  }
+}
 
-  document.getElementById('reset').addEventListener('click', function(){
-  document.getElementById('score').innerHTML = 0;
-  document.getElementById('incorrect').innerHTML = 0;
-  runGame();
-});
-};
+
+
+
+/*
 
 async function displayGeneralKnowledgeQuestions() {
 
-  for (let genKnowledgeObject of genKnowQuestionList) {               // Loop that prints out all the 
-    let generalKnowledgeQuestions = [genKnowledgeObject.question];    // General Knowledge quiz questions.
+  for (let genKnowledgeObject of genKnowQuestionList) { // Loop that prints out all the 
+    let generalKnowledgeQuestions = [genKnowledgeObject.question]; // General Knowledge quiz questions.
     let generalKnowledgequestion_string = document.getElementById('question_string');
     generalKnowledgequestion_string.innerHTML = generalKnowledgeQuestions;
-    startUserTimer();       // Function to start a loop timer for user
-    await sleep(8000);      // Function to wait for the timer till 8 seconds
-}
+    startUserTimer(); // Function to start a loop timer for user
+    await sleep(8000); // Function to wait for the timer till 8 seconds
+  }
 }
 
 async function displayGeographyQuestions() {
@@ -313,8 +320,8 @@ async function displayGeographyQuestions() {
     let geographyQuestions = [geographyObject.question];
     let geogquestion_string = document.getElementById("question_string");
     geoegquestion_string.innerHTML = geographyQuestions;
-    startUserTimer();       // Function to start a loop timer for user
-    await sleep(8000);      // Function to wait for the timer till 8 seconds
+    startUserTimer(); // Function to start a loop timer for user
+    await sleep(8000); // Function to wait for the timer till 8 seconds
   }
 }
 
@@ -323,8 +330,8 @@ async function displayCuisineQuestions() {
     let cuisineQuestions = [cuisineObject.question];
     let cuisineQuestion_string = document.getElementById("question_string");
     cuisineQuestion_string.innerHTML = cuisineQuestions;
-    startUserTimer();       // Function to start a loop timer for user
-    await sleep(8000);      // Function to wait for the timer till 8 seconds
+    startUserTimer(); // Function to start a loop timer for user
+    await sleep(8000); // Function to wait for the timer till 8 seconds
   }
 }
 
@@ -333,7 +340,8 @@ async function displaySportQuestions() {
     let sportQuestions = [sportObject.question];
     let sportQuestion_string = document.getElementById("question_string");
     sportQuestion_string.innerHTML = sportQuestions;
-    startUserTimer();       // Function to start a loop timer for user
-    await sleep(8000);      // Function to wait for the timer till 8 seconds
+    startUserTimer(); // Function to start a loop timer for user
+    await sleep(8000); // Function to wait for the timer till 8 seconds
   }
 }
+*/

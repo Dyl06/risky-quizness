@@ -15,8 +15,18 @@
         <h1 class="heading">Risky Quizness</h1>
     </div>
     <div class="body">
+
         <div class="category">
-            <h2>General Knowledge Quiz</h2>
+            <h2>`${quizCategories}`</h2>
+            <div class="choose_quiz">
+                <select name="quiz" id="quiz">
+                    <option value="General Knowledge">General Knowledge</option>
+                    <option value="Geogrpahy">Geogrpahy</option>
+                    <option value="Cuisine">Cuisine</option>
+                    <option value="Sport">Sport</option>
+                </select>
+            </div>
+    
             <p id="instructions" style="font-size: 1rem;" > To play this game: <br> 
                 You must answer all questions within the alloted 8secs. <br>
                 Click on the True or False Button to answer.
@@ -41,6 +51,7 @@
             <p>Incorrect Answers <span id="incorrect">0</span></p>
         </div>
     </div>
-<script src="assets/js/script.js"></script>
+<!-- <script src="assets/js/script.js"></script> -->
+<script src="assets/js/script-debug.js"></script>
 </body>
 </html>
